@@ -13,7 +13,7 @@ import webpackConfig from './webpack.config.babel';
 
 const paths = {
   allSrcJs: 'src/**/*.js?(x)',
-  clientEntryPoint: 'src/client/app.jsx',
+  clientEntryPoint: 'src/client/index.jsx',
   gulpFile: 'gulpFile.babel.js',
   webpackFile: 'webpack.config.babel.js',
   libDir: 'lib',
