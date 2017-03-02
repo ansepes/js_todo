@@ -1,0 +1,11 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+    "editor.tabSize": 2,
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true,
+    "files.eol": "\n",
+    "eslint.options": {
+        "configFile": "./package.json"
+    },
+    "javascript.validate.enable": false
+}
