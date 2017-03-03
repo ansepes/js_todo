@@ -5,11 +5,8 @@ export const ADD_TODO = 'ADD_TODO';
 
 let nextTodoId = 0;
 
-function payload(text) {
+function payload(message) {
   nextTodoId += 1;
-  return { text, id: nextTodoId };
+  return { message, id: nextTodoId };
 }
 export const addTodo = createAction(ADD_TODO, payload);
-
-
-

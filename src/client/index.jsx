@@ -4,15 +4,19 @@ import { Provider } from 'react-redux';
 import { combineReducers } from 'redux-immutable';
 import { createStore } from 'redux';
 import todoReducer from './reducers/todo-reducer';
-import App from './components/app';
+import AddTodo from './containers/addTodo';
+import TodoItem from './containers/todoItem';
 
 const store = createStore(combineReducers({
-  dog: todoReducer,
+  todos: todoReducer,
 }));
 
 render(
   <Provider store={store}>
-    <App />
+    <div>
+      <AddTodo />
+      <TodoItem />
+    </div>
   </Provider>,
   document.querySelector('.app'),
 );
