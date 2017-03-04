@@ -27,13 +27,13 @@ gulp.task('clean', () => del([
   paths.clientBundle,
 ]));
 
-gulp.task('build', ['lint', 'clean'], () =>
+gulp.task('build', ['clean'], () =>
     gulp.src(paths.allSrcJs)
     .pipe(babel())
     .pipe(gulp.dest(paths.libDir)),
 );
 
-gulp.task('main', ['build'], () =>
+gulp.task('main', ['test'], () =>
   gulp.src(paths.clientEntryPoint)
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest(paths.distDir)),

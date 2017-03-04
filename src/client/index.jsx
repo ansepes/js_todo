@@ -5,7 +5,7 @@ import { combineReducers } from 'redux-immutable';
 import { createStore } from 'redux';
 import todoReducer from './reducers/todo-reducer';
 import AddTodo from './containers/addTodo';
-import TodoItem from './containers/todoItem';
+import TodoList from './containers/todoList';
 
 const store = createStore(combineReducers({
   todos: todoReducer,
@@ -15,7 +15,7 @@ render(
   <Provider store={store}>
     <div>
       <AddTodo />
-      <TodoItem />
+      <TodoList />
     </div>
   </Provider>,
   document.querySelector('.app'),

@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react';
 
-const InputForm = ({ submitAction, actionLabel }: { submitAction: func, actionLabel: string }) => {
+const InputForm = ({ submitAction,
+                     actionLabel,
+                     needResetOnAfterSubmit }: { submitAction: func,
+                                                  actionLabel: string,
+                                                  needResetOnAfterSubmit: boolean }) => {
   let input;
 
   const inputRef = (node) => {
     input = node;
   };
 
-  const resetInput = () => { input.value = ''; };
-
   const submit = (e) => {
-    submitAction(e, input, resetInput);
+    submitAction(e, input);
+    if (needResetOnAfterSubmit) input.value = '';
   };
 
   return (
@@ -28,6 +31,7 @@ const InputForm = ({ submitAction, actionLabel }: { submitAction: func, actionLa
 InputForm.propTypes = {
   submitAction: PropTypes.func.isRequired,
   actionLabel: PropTypes.string.isRequired,
+  needResetOnAfterSubmit: PropTypes.bool.isRequired,
 };
 
 export default InputForm;
