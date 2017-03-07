@@ -5,8 +5,10 @@ import { combineReducers } from 'redux-immutable';
 import assert from 'power-assert';
 import { describe, it, beforeEach } from 'mocha';
 import todoReducer from '../../client/reducers/todo-reducer';
+import visibleFilterReducer from '../../client/reducers/filter-reducer';
 import { addTodo } from '../../client/actions/todo-actions';
 import { toggleTodo } from '../../client/actions/toggle-actions';
+import { visiblityFilter, FILTER_TYPE_ALL, FILTER_TYPE_COMPLETED } from '../../client/actions/filter-action';
 
 let store;
 
@@ -15,6 +17,7 @@ describe('App State', () => {
     beforeEach(() => {
       store = createStore(combineReducers({
         todos: todoReducer,
+        filterReducer: visibleFilterReducer,
       }));
     });
     describe('todos', () => {
@@ -32,6 +35,14 @@ describe('App State', () => {
         store.dispatch(addTodo('hoge'));
         store.dispatch(toggleTodo(1));
         assert.equal(store.getState().getIn(['todos', 'todos'])[0].completed, true);
+      });
+    });
+    describe('visibleFilterReducer', () => {
+      it('filter Todo', () => {
+        store.dispatch(visiblityFilter(FILTER_TYPE_COMPLETED));
+        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_COMPLETED);
+        store.dispatch(visiblityFilter(FILTER_TYPE_ALL));
+        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_ALL);
       });
     });
   });
