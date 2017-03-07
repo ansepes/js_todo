@@ -6,6 +6,7 @@ import assert from 'power-assert';
 import { describe, it, beforeEach } from 'mocha';
 import todoReducer from '../../client/reducers/todo-reducer';
 import { addTodo } from '../../client/actions/todo-actions';
+import { toggleTodo } from '../../client/actions/toggle-actions';
 
 let store;
 
@@ -24,6 +25,13 @@ describe('App State', () => {
         assert.equal(store.getState().getIn(['todos', 'todos'])[0].message, 'hogehoge');
         assert.equal(store.getState().getIn(['todos', 'todos'])[0].id, 1);
         assert.equal(store.getState().getIn(['todos', 'last_id']), 1);
+      });
+    });
+    describe('todos', () => {
+      it('toggle Todo', () => {
+        store.dispatch(addTodo('hoge'));
+        store.dispatch(toggleTodo(1));
+        assert.equal(store.getState().getIn(['todos', 'todos'])[0].completed, true);
       });
     });
   });
