@@ -39,10 +39,9 @@ describe('App State', () => {
     });
     describe('visibleFilterReducer', () => {
       it('filter Todo', () => {
+        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_ALL);
         store.dispatch(visiblityFilter(FILTER_TYPE_COMPLETED));
         assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_COMPLETED);
-        store.dispatch(visiblityFilter(FILTER_TYPE_ALL));
-        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_ALL);
       });
     });
   });
