@@ -17,7 +17,7 @@ describe('App State', () => {
     beforeEach(() => {
       store = createStore(combineReducers({
         todos: todoReducer,
-        filterReducer: visibleFilterReducer,
+        filters: visibleFilterReducer,
       }));
     });
     describe('todos', () => {
@@ -39,9 +39,9 @@ describe('App State', () => {
     });
     describe('visibleFilterReducer', () => {
       it('filter Todo', () => {
-        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_ALL);
+        assert.equal(store.getState().getIn(['filters', 'filter']), FILTER_TYPE_ALL);
         store.dispatch(visiblityFilter(FILTER_TYPE_COMPLETED));
-        assert.equal(store.getState().getIn(['filterReducer', 'filter']), FILTER_TYPE_COMPLETED);
+        assert.equal(store.getState().getIn(['filters', 'filter']), FILTER_TYPE_COMPLETED);
       });
     });
   });
